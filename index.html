@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Смерека — еко-готель у Карпатах біля озера Синевир</title>
+<meta name="description" content="Смерека — 12 дерев'яних будинків у Карпатах біля озера Синевир. Чан під зорями, закарпатська кухня, гори влітку та лижі взимку.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --birch:#f4f1ea; --paper:#fbfaf6; --ink:#1a231e; --muted:#5d695f;
+  --forest:#18231d; --forest-2:#22302a; --moss:#6b7f5a; --gold:#d79a6a; --copper:#c27a4a; --copper-dark:#a3613a;
+  --line:#e2ddd0; --shadow:0 18px 40px rgba(24,35,29,.12);
+  --serif:'Cormorant Garamond',Georgia,serif; --r:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--birch);color:var(--ink);line-height:1.65;font-size:16px;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1180px,100% - 32px);margin-inline:auto}
+section{padding:110px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--copper);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;margin-bottom:16px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.h2{font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:18px}
+.h2 em,h1 em{font-style:italic;color:var(--moss)}
+.lead{color:var(--muted);max-width:640px;font-size:1.06rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--copper);color:#fff;padding:15px 30px;border:0;border-radius:999px;font-weight:600;font-size:.95rem;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.btn:hover{background:var(--copper-dark);transform:translateY(-2px);box-shadow:0 10px 24px rgba(194,122,74,.35)}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
+.btn.line{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+.btn.line:hover{background:#fff;color:var(--forest);box-shadow:none}
+.btn .arr{transition:transform .25s}.btn:hover .arr{transform:translateX(4px)}
+.bg-img{background:linear-gradient(135deg,#6b7f5a,#18231d) center/cover no-repeat}
+
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:60;color:#fff;transition:background .35s,box-shadow .35s}
+header.scrolled{background:rgba(24,35,29,.88);backdrop-filter:blur(14px);box-shadow:0 2px 24px rgba(0,0,0,.25)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font:600 1.65rem var(--serif);letter-spacing:.02em;white-space:nowrap}
+.logo svg{width:30px;height:30px}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.88rem}
+nav a{opacity:.85;position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+nav a:hover{opacity:1}nav a:hover::after{width:100%}
+.right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px}
+.lang button{background:none;border:0;color:#fff;font-size:.74rem;font-weight:700;letter-spacing:.06em;padding:6px 10px;border-radius:999px;cursor:pointer;opacity:.75;transition:.2s}
+.lang button.on{background:#fff;color:var(--forest);opacity:1}
+.right .btn{padding:10px 20px;font-size:.84rem}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:flex-end;color:#fff;padding:150px 0 170px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:-6% 0 0;background:
+   linear-gradient(180deg,rgba(15,22,18,.45) 0%,rgba(15,22,18,.2) 40%,rgba(15,22,18,.9) 100%),
+   url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=72') center/cover,
+   linear-gradient(135deg,#3d5a66,#18231d);
+  transform:scale(1.08);animation:zoom 18s ease-out forwards;will-change:transform}
+@keyframes zoom{to{transform:scale(1)}}
+.mist{position:absolute;inset:auto -20% 0;height:45%;background:radial-gradient(ellipse at 30% 100%,rgba(255,255,255,.18),transparent 60%),radial-gradient(ellipse at 75% 100%,rgba(255,255,255,.12),transparent 55%);animation:drift 22s ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{to{transform:translateX(8%)}}
+.hero .container{position:relative}
+.hero h1{font-size:clamp(3rem,8vw,6.4rem);max-width:900px;margin-bottom:24px;letter-spacing:-.01em}
+.hero h1 em{color:var(--gold)}
+.hero p{font-size:1.15rem;max-width:560px;opacity:.92;margin-bottom:36px}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero .eyebrow{color:var(--gold)}
+.hero-facts{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:48px;margin-top:64px;font-size:.86rem;opacity:.92}
+.hero-facts b{display:block;font:600 2.3rem var(--serif);color:#fff;line-height:1.1}
+.scroll-hint{position:absolute;right:32px;bottom:180px;writing-mode:vertical-rl;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+.scroll-hint::after{content:"";display:block;width:1px;height:60px;background:#fff;margin:12px auto 0;animation:line 2s infinite}
+@keyframes line{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* booking */
+.booking{position:relative;margin-top:-80px;z-index:5}
+.booking-card{background:rgba(251,250,246,.96);backdrop-filter:blur(12px);box-shadow:var(--shadow);border-radius:24px;padding:26px;border:1px solid rgba(255,255,255,.6)}
+.booking form.calc{display:grid;grid-template-columns:1fr 1fr .7fr 1.5fr auto;gap:14px;align-items:end}
+label{display:block;font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
+input,select,textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--copper);box-shadow:0 0 0 4px rgba(194,122,74,.15)}
+.result{margin-top:14px;font-size:.95rem;min-height:1.4em}
+.result.ok{color:#2f6b45}.result.err{color:#a33a2f}
+.quote-box{display:none;margin-top:18px;padding-top:20px;border-top:1px dashed var(--line);grid-template-columns:auto 1fr 1fr auto;gap:14px;align-items:end}
+.quote-box.show{display:grid;animation:fade .4s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.total{font:600 2.2rem var(--serif);color:var(--forest);line-height:1}
+.total-note{font-size:.84rem;color:var(--muted);max-width:280px}
+
+/* marquee */
+.marquee{background:var(--forest);color:#e9ece6;overflow:hidden;padding:22px 0;margin-top:90px}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:mq 40s linear infinite;font:italic 500 1.5rem var(--serif);white-space:nowrap}
+.marquee-track span::after{content:"✦";color:var(--gold);margin-left:48px;font-style:normal;font-size:1rem}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* story */
+.story{display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center}
+.story-imgs{position:relative;aspect-ratio:1/1.05}
+.story-imgs .a{position:absolute;inset:0 18% 14% 0;border-radius:var(--r)}
+.story-imgs .b{position:absolute;inset:48% 0 0 48%;border-radius:var(--r);border:10px solid var(--birch)}
+.story-imgs .badge{position:absolute;left:-14px;bottom:4%;background:var(--copper);color:#fff;border-radius:50%;width:120px;height:120px;display:grid;place-items:center;text-align:center;font:600 1rem/1.15 var(--serif);animation:spin 30s linear infinite;box-shadow:var(--shadow)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.story p+p{margin-top:14px}
+.quote{margin-top:30px;padding:22px 24px;background:var(--paper);border-radius:16px;border-left:3px solid var(--copper);font:italic 500 1.35rem/1.4 var(--serif);color:var(--forest)}
+.quote small{display:block;font:500 .84rem Manrope;color:var(--muted);margin-top:8px;font-style:normal}
+
+/* houses */
+.houses{background:var(--paper)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:52px}
+.card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-8px);box-shadow:0 28px 50px rgba(24,35,29,.18)}
+.card .img{height:280px;position:relative;overflow:hidden}
+.card .img i{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s}
+.card:hover .img i{transform:scale(1.07)}
+.tag{position:absolute;top:18px;left:18px;background:rgba(255,255,255,.94);color:var(--forest);font-size:.74rem;font-weight:700;padding:7px 13px;border-radius:999px;z-index:1}
+.card .body{padding:28px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:2rem;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+.chips span{font-size:.78rem;background:var(--birch);padding:5px 12px;border-radius:999px;color:var(--muted)}
+.card p{color:var(--muted);font-size:.95rem}
+.card .foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.price{font:600 1.8rem var(--serif);color:var(--forest)}
+.price small{font:500 .8rem Manrope;color:var(--muted)}
+.card .btn{padding:11px 22px;font-size:.85rem}
+
+/* seasons */
+.seasons{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+.season{border-radius:24px;padding:44px;color:#fff;min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.season i{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1s}
+.season:hover i{transform:scale(1.05)}
+.season::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,22,18,0) 25%,rgba(15,22,18,.9));z-index:1}
+.season>*:not(i){position:relative;z-index:2}
+.season h3{font-size:2.6rem;margin-bottom:14px}
+.season .eyebrow{color:var(--gold)}
+.season ul{list-style:none;display:grid;gap:8px;font-size:.96rem}
+.season li::before{content:"— ";color:var(--gold)}
+
+/* experiences */
+.exp{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+.exp div{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px 24px;transition:.3s}
+.exp div:hover{background:var(--forest);color:#e9ece6;transform:translateY(-4px)}
+.exp div:hover p{color:#b8c2b9}
+.exp .ic{width:50px;height:50px;border-radius:14px;background:var(--forest);color:var(--gold);display:grid;place-items:center;font-size:1.35rem;margin-bottom:18px;transition:.3s}
+.exp div:hover .ic{background:var(--copper);color:#fff}
+.exp h3{font-size:1.45rem;margin-bottom:6px}
+.exp p{font-size:.88rem;color:var(--muted);transition:.3s}
+
+/* kitchen */
+.kitchen{background:var(--forest);color:#e9ece6;position:relative;overflow:hidden}
+.kitchen .lead{color:#b8c2b9}
+.kitchen .h2 em{color:var(--gold)}
+.kitchen-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.menu{margin-top:32px;display:grid;gap:18px}
+.menu-item{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed rgba(255,255,255,.18);padding-bottom:14px}
+.menu-item b{font:600 1.3rem var(--serif);color:#fff}
+.menu-item span{display:block;font-size:.85rem;color:#a9b4aa}
+.menu-item i{font-style:normal;color:var(--gold);white-space:nowrap;font-weight:600}
+.kitchen-img{border-radius:24px;aspect-ratio:4/5;position:relative}
+.kitchen-img::after{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.35);border-radius:16px}
+
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.offer{background:var(--paper);border-radius:24px;padding:34px;border:1px solid var(--line);display:flex;flex-direction:column;transition:.3s}
+.offer:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.offer.hot{background:linear-gradient(160deg,#c9834f,#9e5a33);color:#fff;border-color:transparent;transform:scale(1.03)}
+.offer.hot:hover{transform:scale(1.03) translateY(-6px)}
+.offer.hot p,.offer.hot li{color:#fde9dc}
+.offer h3{font-size:2rem;margin:8px 0 10px}
+.offer .badge{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;opacity:.8}
+.offer p{color:var(--muted);font-size:.92rem}
+.offer ul{margin:18px 0 24px;padding-left:18px;font-size:.92rem;color:var(--muted);display:grid;gap:5px}
+.offer .price{margin-top:auto}
+.offer.hot .price,.offer.hot .price small{color:#fff}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;margin-top:48px}
+.gallery button{border:0;border-radius:18px;cursor:zoom-in;overflow:hidden;position:relative;padding:0}
+.gallery button i{position:absolute;inset:0;background:linear-gradient(135deg,#6b7f5a,#18231d) center/cover;background-size:cover;background-position:center;transition:transform .7s}
+.gallery button:hover i{transform:scale(1.08)}
+.gallery .w{grid-column:span 2}.gallery .t{grid-row:span 2}
+.lightbox{position:fixed;inset:0;background:rgba(10,15,12,.92);display:none;place-items:center;z-index:100;padding:20px;cursor:zoom-out}
+.lightbox.show{display:grid;animation:fade .3s}
+.lightbox img{max-width:min(1200px,100%);max-height:88vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+/* reviews */
+.reviews{background:var(--paper)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.rev{background:#fff;padding:32px;border-radius:24px;box-shadow:var(--shadow);position:relative}
+.rev::before{content:"“";position:absolute;right:24px;top:6px;font:600 5rem var(--serif);color:var(--birch);line-height:1}
+.stars{color:var(--copper);letter-spacing:3px;margin-bottom:12px}
+.rev p{font-size:.95rem;margin-bottom:18px;position:relative}
+.rev b{font-size:.9rem}.rev small{display:block;color:var(--muted);font-size:.8rem}
+
+/* road + faq */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.route{list-style:none;display:grid;gap:20px;margin-top:30px}
+.route li{display:grid;grid-template-columns:46px 1fr;gap:16px}
+.route .n{width:46px;height:46px;border-radius:50%;background:var(--forest);color:var(--gold);display:grid;place-items:center;font-weight:700}
+.route b{display:block}.route span{color:var(--muted);font-size:.92rem}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--copper);font-size:1.5rem;line-height:1;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:10px;font-size:.95rem}
+
+/* contacts */
+.contacts{background:var(--forest);color:#e9ece6}
+.contacts .lead{color:#b8c2b9}
+.contacts .h2 em{color:var(--gold)}
+.contacts .two{margin-top:44px}
+.c-list{list-style:none;display:grid;gap:22px}
+.c-list b{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:2px}
+.c-list a:hover{color:var(--gold)}
+form.contact{display:grid;gap:14px;background:var(--forest-2);padding:30px;border-radius:24px;border:1px solid rgba(255,255,255,.08)}
+.contacts label{color:#b8c2b9}
+.contacts input,.contacts textarea{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#fff}
+.contacts .result.ok{color:#9fd8b0}.contacts .result.err{color:#f0a598}
+.hp{position:absolute;left:-9999px}
+footer{background:#111914;color:#7f8b82;padding:32px 0;font-size:.85rem}
+footer .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* toast + top */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,40px);background:var(--forest);color:#fff;padding:14px 22px;border-radius:14px;box-shadow:var(--shadow);opacity:0;transition:.35s;z-index:90;max-width:calc(100% - 32px);font-size:.92rem}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.to-top{position:fixed;right:20px;bottom:20px;width:48px;height:48px;border-radius:50%;border:0;background:var(--copper);color:#fff;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:80;box-shadow:var(--shadow)}
+.to-top.show{opacity:1;pointer-events:auto}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+@media(max-width:1100px){
+  nav ul{gap:16px;font-size:.82rem}
+  .right .btn{display:none}
+}
+@media(max-width:1020px){
+  .booking form.calc{grid-template-columns:1fr 1fr}
+  .booking form.calc .wide{grid-column:span 2}
+  .quote-box{grid-template-columns:1fr 1fr}
+  .quote-box .sum{grid-column:span 2}
+  .exp{grid-template-columns:1fr 1fr}
+  .offers,.rev-grid{grid-template-columns:1fr}
+  .offer.hot,.offer.hot:hover{transform:none}
+  .story,.kitchen-grid,.two{grid-template-columns:1fr;gap:44px}
+  .gallery{grid-template-columns:1fr 1fr}
+  .scroll-hint{display:none}
+}
+@media(max-width:860px){
+  section{padding:72px 0}
+  .burger{display:block}
+  nav ul{position:absolute;top:80px;left:0;right:0;background:var(--forest);flex-direction:column;gap:0;display:none;font-size:.95rem}
+  nav ul.open{display:flex}
+  nav li a{display:block;padding:16px 24px;border-top:1px solid rgba(255,255,255,.08)}
+  nav a::after{display:none}
+  .cards,.seasons{grid-template-columns:1fr}
+  .season{min-height:360px;padding:30px}
+  .hero-facts{grid-template-columns:repeat(2,auto);gap:24px 40px}
+}
+@media(max-width:560px){
+  .logo{font-size:1.4rem}
+  .lang button{padding:5px 8px}
+  .booking form.calc,.quote-box{grid-template-columns:1fr}
+  .booking form.calc .wide,.quote-box .sum{grid-column:auto}
+  .exp{grid-template-columns:1fr}
+  .gallery{grid-auto-rows:150px}
+  .story-imgs .badge{width:96px;height:96px;font-size:.85rem;left:0}
+  form.contact{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <a href="#top" class="logo" aria-label="Смерека">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#d79a6a" stroke-width="1.8" aria-hidden="true"><path d="M16 3 9 13h4l-6 8h5l-5 6h18l-5-6h5l-6-8h4z"/><path d="M16 27v3"/></svg>
+      Смерека
+    </a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#story" data-i18n="nav.story"></a></li>
+        <li><a href="#houses" data-i18n="nav.houses"></a></li>
+        <li><a href="#seasons" data-i18n="nav.seasons"></a></li>
+        <li><a href="#kitchen" data-i18n="nav.kitchen"></a></li>
+        <li><a href="#offers" data-i18n="nav.offers"></a></li>
+        <li><a href="#contacts" data-i18n="nav.contacts"></a></li>
+      </ul>
+    </nav>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="uk">UA</button><button data-lang="ru">RU</button><button data-lang="en">EN</button>
+      </div>
+      <a href="#book" class="btn" data-i18n="cta.book"></a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="mist"></div>
+    <div class="container">
+      <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+      <h1 data-i18n-html="hero.title"></h1>
+      <p data-i18n="hero.text"></p>
+      <div class="actions">
+        <a href="#book" class="btn"><span data-i18n="hero.btn1"></span><span class="arr">→</span></a>
+        <a href="#houses" class="btn line" data-i18n="hero.btn2"></a>
+      </div>
+      <div class="hero-facts">
+        <div><b data-count="12">0</b><span data-i18n="f1"></span></div>
+        <div><b data-count="1200" data-suffix=" м">0</b><span data-i18n="f2"></span></div>
+        <div><b data-count="2" data-suffix=" km" data-i18n-suffix="f3s">0</b><span data-i18n="f3"></span></div>
+        <div><b data-count="4.97" data-dec="2">0</b><span data-i18n="f4"></span></div>
+      </div>
+    </div>
+    <div class="scroll-hint" data-i18n="scroll"></div>
+  </div>
+
+  <div class="booking" id="book">
+    <div class="container">
+      <div class="booking-card">
+        <form class="calc" id="bookingForm" novalidate>
+          <div><label for="in" data-i18n="book.in"></label><input type="date" id="in" required></div>
+          <div><label for="out" data-i18n="book.out"></label><input type="date" id="out" required></div>
+          <div><label for="guests" data-i18n="book.guests"></label>
+            <select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="wide"><label for="house" data-i18n="book.house"></label><select id="house"></select></div>
+          <button class="btn" type="submit" data-i18n="book.calc"></button>
+        </form>
+        <div class="result" id="bookResult" role="status" aria-live="polite"></div>
+        <form class="quote-box" id="quoteBox" novalidate>
+          <div class="sum"><div class="total" id="total"></div><div class="total-note" id="totalNote"></div></div>
+          <div><label for="bname" data-i18n="form.name"></label><input id="bname" autocomplete="name" required></div>
+          <div><label for="bcontact" data-i18n="form.contact"></label><input id="bcontact" autocomplete="tel" required></div>
+          <button class="btn" type="submit" data-i18n="book.send"></button>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+  <section id="story">
+    <div class="container story">
+      <div class="story-imgs reveal">
+        <div class="a bg-img" style="background-image:url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=900&q=72')"></div>
+        <div class="b bg-img" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=72')"></div>
+        <div class="badge" data-i18n-html="story.badge"></div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="story.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="story.title"></h2>
+        <p class="lead" data-i18n="story.p1"></p>
+        <p class="lead" data-i18n="story.p2"></p>
+        <div class="quote"><span data-i18n="story.quote"></span><small data-i18n="story.who"></small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="houses" id="houses">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="houses.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="houses.title"></h2>
+        <p class="lead" data-i18n="houses.lead"></p>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <section id="seasons">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="seasons.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="seasons.title"></h2>
+        <p class="lead" data-i18n="seasons.lead"></p>
+      </div>
+      <div class="seasons">
+        <div class="season reveal">
+          <i style="background-image:url('https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1100&q=72')"></i>
+          <p class="eyebrow" data-i18n="s1.when"></p>
+          <h3 data-i18n="s1.title"></h3>
+          <ul data-i18n-list="s1.list"></ul>
+        </div>
+        <div class="season reveal">
+          <i style="background-image:url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1100&q=72')"></i>
+          <p class="eyebrow" data-i18n="s2.when"></p>
+          <h3 data-i18n="s2.title"></h3>
+          <ul data-i18n-list="s2.list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exp" style="padding-top:0">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="exp.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="exp.title"></h2>
+      </div>
+      <div class="exp" id="exp-grid"></div>
+    </div>
+  </section>
+
+  <section class="kitchen" id="kitchen">
+    <div class="container kitchen-grid">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="kitchen.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="kitchen.title"></h2>
+        <p class="lead" data-i18n="kitchen.lead"></p>
+        <div class="menu" id="menu-list"></div>
+      </div>
+      <div class="kitchen-img bg-img reveal" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=72')"></div>
+    </div>
+  </section>
+
+  <section id="offers">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="offers.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="offers.title"></h2>
+        <p class="lead" data-i18n="offers.lead"></p>
+      </div>
+      <div class="offers" id="offers-grid"></div>
+    </div>
+  </section>
+
+  <section id="gallery" style="padding-top:0">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="gallery.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="gallery.title"></h2>
+      </div>
+      <div class="gallery">
+        <button class="w t reveal" data-full="photo-1506905925346-21bda4d32df4"><i></i></button>
+        <button class="reveal" data-full="photo-1544161515-4ab6ce6db874"><i></i></button>
+        <button class="reveal" data-full="photo-1501785888041-af3ef285b470"><i></i></button>
+        <button class="w reveal" data-full="photo-1441974231531-c6227db76b6e"><i></i></button>
+      </div>
+    </div>
+  </section>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><img alt=""></div>
+
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="reviews.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="reviews.title"></h2>
+        <p class="lead" data-i18n="reviews.lead"></p>
+      </div>
+      <div class="rev-grid" id="rev-grid"></div>
+    </div>
+  </section>
+
+  <section id="road">
+    <div class="container two">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="road.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="road.title"></h2>
+        <ul class="route" id="route"></ul>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="faq.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="faq.title"></h2>
+        <div id="faq"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacts" id="contacts">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="contacts.eyebrow"></p>
+        <h2 class="h2" data-i18n-html="contacts.title"></h2>
+        <p class="lead" data-i18n="contacts.lead"></p>
+      </div>
+      <div class="two">
+        <ul class="c-list reveal">
+          <li><b data-i18n="c.addrL"></b><span data-i18n="c.addr"></span></li>
+          <li><b data-i18n="c.phoneL"></b><a href="tel:+380000000000">+380 (00) 000-00-00</a></li>
+          <li><b data-i18n="c.mailL"></b><a href="mailto:liutkoh@gmail.com">liutkoh@gmail.com</a></li>
+          <li><b data-i18n="c.msgL"></b><span data-i18n="c.msg"></span></li>
+        </ul>
+        <form class="contact reveal" id="contactForm" novalidate>
+          <div><label for="cname" data-i18n="form.name"></label><input id="cname" name="name" autocomplete="name" required></div>
+          <div><label for="ccontact" data-i18n="form.contact"></label><input id="ccontact" name="contact" required></div>
+          <div><label for="ctext" data-i18n="form.text"></label><textarea id="ctext" name="message" rows="4" required></textarea></div>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn" type="submit"><span data-i18n="form.send"></span><span class="arr">→</span></button>
+          <p class="result" id="contactMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© <span id="year"></span> <span data-i18n="footer.copy"></span></span>
+    <span data-i18n="footer.made"></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+<button class="to-top" id="toTop" aria-label="Up">↑</button>
+
+<script>
+/* ===== Налаштування: куди надходять листи з форм ===== */
+const EMAIL_TO = 'liutkoh@gmail.com';
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + EMAIL_TO;
+
+const IMG = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=72`;
+const HOUSES = [
+  {id:'forest', price:2900, max:2, img:'photo-1449158743715-0a90ebb6d2d8'},
+  {id:'glass',  price:4800, max:2, img:'photo-1531366936337-7c912a4589a7'},
+  {id:'shore',  price:6500, max:4, img:'photo-1501785888041-af3ef285b470'},
+  {id:'family', price:9800, max:6, img:'photo-1518780664697-55e3ad937233'},
+];
+const EXP_ICONS = ['♨','⛰','🌲','✦','🎣','🛶','🍯','⛷'];
+
+const T = {
+uk:{
+  title:'Смерека — еко-готель у Карпатах біля озера Синевир',
+  'nav.story':'Про нас','nav.houses':'Будинки','nav.seasons':'Сезони','nav.kitchen':'Кухня','nav.offers':'Пакети','nav.contacts':'Контакти','cta.book':'Забронювати',
+  'hero.eyebrow':'Закарпаття · озеро Синевир','hero.title':'Дванадцять будинків, гори і <em>тиша</em>',
+  'hero.text':'Еко-готель серед смерекового лісу в Карпатах. Чан під зорями, закарпатська кухня, світанки над полонинами та сніжні зими.',
+  'hero.btn1':'Обрати дати','hero.btn2':'Дивитися будинки',
+  f1:'будинків зі смереки',f2:'над рівнем моря',f3:'до озера Синевир',f3s:' км',f4:'оцінка гостей',scroll:'Гортайте',
+  'book.in':'Заїзд','book.out':'Виїзд','book.guests':'Гостей','book.house':'Будинок','book.calc':'Розрахувати','book.send':'Надіслати заявку',
+  marquee:'Чан під зорями|Ранкова кава на терасі|Тиша смерекового лісу|Банош з бринзою|Світанок над полониною|Сніг і камін',
+  'story.badge':'з 2014<br>року','story.eyebrow':'Про нас','story.title':'Місце, де час <em>сповільнюється</em>',
+  'story.p1':'Смерека — це карпатське дерево, з якого споруджені всі наші будинки. Ми розташовані на схилі над долиною, за два кілометри від озера Синевир, «морського ока» Карпат.',
+  'story.p2':'Дванадцять будинків стоять так, щоб із вікон не було видно сусідів: лише гори, ліс і небо. Без телевізорів, але зі швидким інтернетом, якщо без нього ніяк.',
+  'story.quote':'«Хотілося створити місце, куди приїжджаєш на вихідні, а їдеш ніби після місяця відпустки».','story.who':'Оксана та Мирослав Гаврилюки, засновники',
+  'houses.eyebrow':'Проживання','houses.title':'Чотири типи <em>будинків</em>','houses.lead':'Кожен будинок збудований зі смереки, з теплою підлогою, каміном і терасою. Сніданок входить у вартість.',
+  perNight:'/ ніч',choose:'Обрати',
+  'h.forest':'Лісова колиба','h.glass':'Скляний дім «Зоряний»','h.shore':'Дім біля потоку з чаном','h.family':'Садиба «Ґражда»',
+  'h.forest.tag':'5 будинків','h.glass.tag':'Хіт сезону','h.shore.tag':'Свій чан','h.family.tag':'Для родини й друзів',
+  'h.forest.chips':'28 м²|до 2 гостей|камін|тераса','h.glass.chips':'34 м²|до 2 гостей|скляний дах|вид на гори','h.shore.chips':'52 м²|до 4 гостей|чан на дровах|гірський потік','h.family.chips':'110 м²|до 6 гостей|3 спальні|кухня-вітальня',
+  'h.forest.d':'Затишна колиба для двох у глибині лісу. Ліжко біля панорамного вікна, кавоварка, гамак на терасі.',
+  'h.glass.d':'Спальня під скляною стелею: над вами Чумацький Шлях і падаючі зірки. Телескоп у кожному будинку.',
+  'h.shore.d':'Стоїть просто біля гірського потоку. Власний чан на дровах із травами, лазня і тераса над водою.',
+  'h.family.d':'Двоповерхова садиба з трьома спальнями, великою кухнею, піччю та банним комплексом. Мангальна зона з видом на гори.',
+  'seasons.eyebrow':'Цілий рік','seasons.title':'Дві різні <em>відпустки</em> в одному місці','seasons.lead':'Улітку тут полонини, чорниці та довгі вечори. Узимку — сніг до вікон, лижі та чан посеред замету.',
+  's1.when':'Червень — вересень','s1.title':'Літо на полонинах','s1.list':'Походи на полонину Кук і Красна|Рафтинг на річці Теребля|Збір чорниць і білих грибів|Озеро Синевир на світанку',
+  's2.when':'Грудень — березень','s2.title':'Зима і сніг','s2.list':'Лижі в Пилипці та на Драгобраті|Прогулянки на снігоступах|Різдво з колядниками|Гарячий чан у снігу',
+  'exp.eyebrow':'Чим зайнятися','exp.title':'Враження <em>включені</em>',
+  'e.t':'Чан на травах|Гірські походи|Стежка «Смерека»|Йога на терасі|Риболовля на форель|Сплави на каяках|Сироварня|Лижі',
+  'e.d':'Гарячий чан на дровах із карпатськими травами|Гід проведе на найкрасивіші полонини|6 км лісом до водоспаду Шипіт|Щоранку о 8:00 з видом на гори|Вудки, гід та форель на грилі з улову|Спокійна річка, видаємо спорядження|Варимо бринзу разом із вівчарями|Підйомники за 25 хвилин від нас',
+  'kitchen.eyebrow':'Ресторан «Ватра»','kitchen.title':'Закарпатська кухня <em>з того, що поруч</em>',
+  'kitchen.lead':'Бринзу везуть із сусідньої полонини, гриби та ягоди збираємо в нашому лісі, хліб печемо самі щоранку. Шеф Мар\'яна Лукач готує за бабусиними рецептами, але по-новому.',
+  'm.t':'Банош з бринзою і шкварками|Бограч у казанку|Карпатська форель на ватрі|Деруни з білими грибами','m.d':'Кукурудзяна крупа, домашня сметана|Три види м\'яса, димок від ватри|Масло з травами, печені овочі|Сметана, цибуля, чебрець',
+  'm.p':'240|320|420|260',
+  'offers.eyebrow':'Пакети','offers.title':'Готові <em>сценарії</em> відпочинку','offers.lead':'Ми вже все продумали: проживання, харчування та враження в одній ціні.',
+  'o.badge':'2 ночі|3 ночі · будь-який сезон|4 ночі · червень — серпень','o.t':'Перезавантаження|Зоряне небо|Карпатське літо',
+  'o.d':'Для тих, хто втомився від міста й хоче просто виспатися.|Ніч під зорями, телескоп і вечеря при свічках.|Літня відпустка в горах для родини чи компанії.',
+  'o.l1':'Лісова колиба на двох|Сніданки та одна вечеря|Чан на травах|Пізній виїзд до 16:00',
+  'o.l2':'Скляний дім «Зоряний»|Повний пансіон|Нічна екскурсія з астрономом|Масаж для двох',
+  'o.l3':'Дім біля потоку з чаном|Сніданки та вечері|Похід на полонину з гідом|Рафтинг на Тереблі',
+  'o.u':'за двох|за двох|до 4 гостей','o.p':'7900|17500|31000',
+  'gallery.eyebrow':'Галерея','gallery.title':'Трохи <em>атмосфери</em>',
+  'reviews.eyebrow':'Відгуки','reviews.title':'Гості <em>повертаються</em>','reviews.lead':'Кожен третій гість приїжджає до нас знову.',
+  'r.t':'Лежали в «Зоряному» і рахували падаючі зірки, поки не заснули. Вранці кава на терасі над туманом. Найкращий подарунок на річницю.|Приїхали компанією в садибу «Ґражда». Чан, гори, бограч на ватрі, діти цілий день у лісі. Їхати не хотілося зовсім.|Така тиша, що першої ночі не могла заснути. Банош у ресторані найкращий, який я куштувала в Карпатах. Персонал дуже щирий.',
+  'r.w':'Марина та Олег|Родина Коваленків|Ірина','r.f':'Львів, лютий|Київ, липень|Одеса, вересень',
+  'road.eyebrow':'Як дістатися','road.title':'Дорога — <em>частина подорожі</em>',
+  'rt.t':'До Мукачева чи Ужгорода|Трансфер до нас|Власним авто','rt.d':'Нічний потяг з Києва чи Львова, «Інтерсіті» або автобус.|Зустрінемо на вокзалі. 2 години мальовничою дорогою, 1 800 ₴ за авто.|Через Міжгір\'я, останні 5 км серпантином. Взимку дорогу чистимо. Парковка безкоштовна.',
+  'faq.eyebrow':'Часті питання','faq.title':'Відповідаємо <em>заздалегідь</em>',
+  'q.q':'О котрій заїзд і виїзд?|Можна з собакою?|Чи є зв\'язок та інтернет?|Чи безпечно в горах узимку?|Які умови скасування?',
+  'q.a':'Заїзд з 15:00, виїзд до 12:00. Ранній заїзд і пізній виїзд — за можливості, безкоштовно.|Так, у Лісові колиби та Садибу. Доплата 400 ₴ за перебування, лежанку й миски дамо.|Мобільний зв\'язок є по всій території, у кожному будинку Wi-Fi через Starlink. Швидкості вистачає для відеодзвінків.|Так. Під\'їзну дорогу чистимо щодня, а за потреби заберемо вас на позашляховику з траси.|Безкоштовне скасування за 14 днів до заїзду. Пізніше утримуємо вартість першої ночі.',
+  'contacts.eyebrow':'Контакти','contacts.title':'Напишіть <em>нам</em>','contacts.lead':'Допоможемо обрати будинок, дати та враження. Відповідаємо протягом години з 9:00 до 22:00.',
+  'c.addrL':'Адреса','c.addr':'Закарпатська обл., Хустський р-н, с. Синевир','c.phoneL':'Телефон','c.mailL':'Пошта','c.msgL':'Месенджери','c.msg':'Telegram і Viber за тим самим номером',
+  'form.name':'Ваше ім\'я','form.contact':'Телефон або пошта','form.text':'Повідомлення','form.send':'Надіслати',
+  'footer.copy':'Еко-готель «Смерека». Карпати.','footer.made':'Зроблено з любов\'ю до гір',
+  'err.dates':'Вкажіть дати заїзду та виїзду.','err.past':'Дата заїзду вже минула.','err.order':'Виїзд має бути хоча б на день пізніше за заїзд.','err.long':'Онлайн можна забронювати до 30 ночей. Для довшого перебування напишіть нам.',
+  'err.cap':'«{h}» вміщує до {n} гостей. Оберіть більший будинок.','note':'Сніданки включені. Залиште контакти, і ми підтвердимо бронювання.','disc':'знижка 10% за тиждень',
+  nights:['ніч','ночі','ночей'],guests:['гість','гості','гостей'],
+  fill:'Будь ласка, заповніть усі поля.',sending:'Надсилаємо…',sent:'Дякуємо! Ми відповімо вам найближчим часом.',bookSent:'Заявку надіслано! Ми зв\'яжемося з вами, щоб підтвердити бронювання.',
+  fail:'Не вдалося надіслати. Напишіть нам напряму: ',subjMsg:'Нове повідомлення з сайту «Смерека»',subjBook:'Нова заявка на бронювання — «Смерека»'
+},
+ru:{
+  title:'Смерека — эко-отель в Карпатах у озера Синевир',
+  'nav.story':'О нас','nav.houses':'Дома','nav.seasons':'Сезоны','nav.kitchen':'Кухня','nav.offers':'Пакеты','nav.contacts':'Контакты','cta.book':'Забронировать',
+  'hero.eyebrow':'Закарпатье · озеро Синевир','hero.title':'Двенадцать домов, горы и <em>тишина</em>',
+  'hero.text':'Эко-отель среди елового леса в Карпатах. Чан под звёздами, закарпатская кухня, рассветы над полонинами и снежные зимы.',
+  'hero.btn1':'Выбрать даты','hero.btn2':'Смотреть дома',
+  f1:'домов из смереки',f2:'над уровнем моря',f3:'до озера Синевир',f3s:' км',f4:'оценка гостей',scroll:'Листайте',
+  'book.in':'Заезд','book.out':'Выезд','book.guests':'Гостей','book.house':'Дом','book.calc':'Рассчитать','book.send':'Отправить заявку',
+  marquee:'Чан под звёздами|Утренний кофе на террасе|Тишина елового леса|Банош с брынзой|Рассвет над полониной|Снег и камин',
+  'story.badge':'с 2014<br>года','story.eyebrow':'О нас','story.title':'Место, где время <em>замедляется</em>',
+  'story.p1':'Смерека — карпатская ель, из которой построены все наши дома. Мы стоим на склоне над долиной, в двух километрах от озера Синевир, «морского глаза» Карпат.',
+  'story.p2':'Двенадцать домов расставлены так, чтобы из окон не было видно соседей: только горы, лес и небо. Без телевизоров, но с быстрым интернетом, если без него никак.',
+  'story.quote':'«Хотелось сделать место, куда приезжаешь на выходные, а уезжаешь будто после месяца отпуска».','story.who':'Оксана и Мирослав Гаврилюк, основатели',
+  'houses.eyebrow':'Проживание','houses.title':'Четыре типа <em>домов</em>','houses.lead':'Каждый дом построен из смереки, с тёплыми полами, камином и террасой. Завтрак входит в стоимость.',
+  perNight:'/ ночь',choose:'Выбрать',
+  'h.forest':'Лесная колыба','h.glass':'Стеклянный дом «Звёздный»','h.shore':'Дом у ручья с чаном','h.family':'Усадьба «Гражда»',
+  'h.forest.tag':'5 домов','h.glass.tag':'Хит сезона','h.shore.tag':'Свой чан','h.family.tag':'Для семьи и друзей',
+  'h.forest.chips':'28 м²|до 2 гостей|камин|терраса','h.glass.chips':'34 м²|до 2 гостей|стеклянная крыша|вид на горы','h.shore.chips':'52 м²|до 4 гостей|чан на дровах|горный ручей','h.family.chips':'110 м²|до 6 гостей|3 спальни|кухня-гостиная',
+  'h.forest.d':'Уютная колыба для двоих в глубине леса. Кровать у панорамного окна, кофемашина, гамак на террасе.',
+  'h.glass.d':'Спальня под стеклянным потолком: над вами Млечный Путь и падающие звёзды. Телескоп в каждом доме.',
+  'h.shore.d':'Стоит прямо у горного ручья. Свой чан на дровах с травами, баня и терраса над водой.',
+  'h.family.d':'Двухэтажная усадьба с тремя спальнями, большой кухней, печью и банным комплексом. Мангальная зона с видом на горы.',
+  'seasons.eyebrow':'Круглый год','seasons.title':'Два разных <em>отпуска</em> в одном месте','seasons.lead':'Летом здесь полонины, черника и долгие вечера. Зимой — снег до окон, лыжи и чан посреди сугроба.',
+  's1.when':'Июнь — сентябрь','s1.title':'Лето на полонинах','s1.list':'Походы на полонину Кук и Красна|Рафтинг на реке Теребля|Сбор черники и белых грибов|Озеро Синевир на рассвете',
+  's2.when':'Декабрь — март','s2.title':'Зима и снег','s2.list':'Лыжи в Пилипце и на Драгобрате|Прогулки на снегоступах|Рождество с колядниками|Горячий чан в снегу',
+  'exp.eyebrow':'Чем заняться','exp.title':'Впечатления <em>включены</em>',
+  'e.t':'Чан на травах|Горные походы|Тропа «Смерека»|Йога на террасе|Рыбалка на форель|Сплавы на каяках|Сыроварня|Лыжи',
+  'e.d':'Горячий чан на дровах с карпатскими травами|Гид проведёт на самые красивые полонины|6 км лесом к водопаду Шипот|Каждое утро в 8:00 с видом на горы|Удочки, гид и форель на гриле из улова|Спокойная река, выдаём снаряжение|Варим брынзу вместе с пастухами|Подъёмники в 25 минутах от нас',
+  'kitchen.eyebrow':'Ресторан «Ватра»','kitchen.title':'Закарпатская кухня <em>из того, что рядом</em>',
+  'kitchen.lead':'Брынзу везут с соседней полонины, грибы и ягоды собираем в нашем лесу, хлеб печём сами каждое утро. Шеф Марьяна Лукач готовит по бабушкиным рецептам, но по-новому.',
+  'm.t':'Банош с брынзой и шкварками|Бограч в казанке|Карпатская форель на ватре|Драники с белыми грибами','m.d':'Кукурузная крупа, домашняя сметана|Три вида мяса, дымок от костра|Масло с травами, печёные овощи|Сметана, лук, чабрец',
+  'm.p':'240|320|420|260',
+  'offers.eyebrow':'Пакеты','offers.title':'Готовые <em>сценарии</em> отдыха','offers.lead':'Мы уже всё продумали: проживание, питание и впечатления в одной цене.',
+  'o.badge':'2 ночи|3 ночи · любой сезон|4 ночи · июнь — август','o.t':'Перезагрузка|Звёздное небо|Карпатское лето',
+  'o.d':'Для тех, кто устал от города и хочет просто выспаться.|Ночь под звёздами, телескоп и ужин при свечах.|Летний отпуск в горах для семьи или компании.',
+  'o.l1':'Лесная колыба на двоих|Завтраки и один ужин|Чан на травах|Поздний выезд до 16:00',
+  'o.l2':'Стеклянный дом «Звёздный»|Полный пансион|Ночная экскурсия с астрономом|Массаж для двоих',
+  'o.l3':'Дом у ручья с чаном|Завтраки и ужины|Поход на полонину с гидом|Рафтинг на Теребле',
+  'o.u':'за двоих|за двоих|до 4 гостей','o.p':'7900|17500|31000',
+  'gallery.eyebrow':'Галерея','gallery.title':'Немного <em>атмосферы</em>',
+  'reviews.eyebrow':'Отзывы','reviews.title':'Гости <em>возвращаются</em>','reviews.lead':'Каждый третий гость приезжает к нам снова.',
+  'r.t':'Лежали в «Звёздном» и считали падающие звёзды, пока не уснули. Утром кофе на террасе над туманом. Лучший подарок на годовщину.|Приехали компанией в усадьбу «Гражда». Чан, горы, бограч на костре, дети весь день в лесу. Уезжать совсем не хотелось.|Такая тишина, что в первую ночь не могла уснуть. Банош в ресторане лучший, что я пробовала в Карпатах. Персонал очень душевный.',
+  'r.w':'Марина и Олег|Семья Коваленко|Ирина','r.f':'Львов, февраль|Киев, июль|Одесса, сентябрь',
+  'road.eyebrow':'Как добраться','road.title':'Дорога — <em>часть путешествия</em>',
+  'rt.t':'До Мукачева или Ужгорода|Трансфер к нам|На своей машине','rt.d':'Ночной поезд из Киева или Львова, «Интерсити» или автобус.|Встретим на вокзале. 2 часа живописной дорогой, 1 800 ₴ за машину.|Через Межгорье, последние 5 км серпантином. Зимой дорогу чистим. Парковка бесплатная.',
+  'faq.eyebrow':'Частые вопросы','faq.title':'Отвечаем <em>заранее</em>',
+  'q.q':'Во сколько заезд и выезд?|Можно с собакой?|Есть ли связь и интернет?|Безопасно ли в горах зимой?|Какие условия отмены?',
+  'q.a':'Заезд с 15:00, выезд до 12:00. Ранний заезд и поздний выезд — по возможности, бесплатно.|Да, в Лесные колыбы и Усадьбу. Доплата 400 ₴ за пребывание, лежанку и миски дадим.|Мобильная связь есть по всей территории, в каждом доме Wi-Fi через Starlink. Скорости хватает для видеозвонков.|Да. Подъездную дорогу чистим каждый день, а при необходимости заберём вас на внедорожнике с трассы.|Бесплатная отмена за 14 дней до заезда. Позже удерживаем стоимость первой ночи.',
+  'contacts.eyebrow':'Контакты','contacts.title':'Напишите <em>нам</em>','contacts.lead':'Поможем выбрать дом, даты и впечатления. Отвечаем в течение часа с 9:00 до 22:00.',
+  'c.addrL':'Адрес','c.addr':'Закарпатская обл., Хустский р-н, с. Синевир','c.phoneL':'Телефон','c.mailL':'Почта','c.msgL':'Мессенджеры','c.msg':'Telegram и Viber по тому же номеру',
+  'form.name':'Ваше имя','form.contact':'Телефон или почта','form.text':'Сообщение','form.send':'Отправить',
+  'footer.copy':'Эко-отель «Смерека». Карпаты.','footer.made':'Сделано с любовью к горам',
+  'err.dates':'Укажите даты заезда и выезда.','err.past':'Дата заезда уже прошла.','err.order':'Выезд должен быть хотя бы на день позже заезда.','err.long':'Онлайн можно забронировать до 30 ночей. Для долгого проживания напишите нам.',
+  'err.cap':'«{h}» вмещает до {n} гостей. Выберите дом побольше.','note':'Завтраки включены. Оставьте контакты, и мы подтвердим бронь.','disc':'скидка 10% за неделю',
+  nights:['ночь','ночи','ночей'],guests:['гость','гостя','гостей'],
+  fill:'Пожалуйста, заполните все поля.',sending:'Отправляем…',sent:'Спасибо! Мы ответим вам в ближайшее время.',bookSent:'Заявка отправлена! Мы свяжемся с вами, чтобы подтвердить бронь.',
+  fail:'Не удалось отправить. Напишите нам напрямую: ',subjMsg:'Новое сообщение с сайта «Смерека»',subjBook:'Новая заявка на бронирование — «Смерека»'
+},
+en:{
+  title:'Smereka — eco-lodge in the Carpathians by Lake Synevyr',
+  'nav.story':'About','nav.houses':'Cabins','nav.seasons':'Seasons','nav.kitchen':'Kitchen','nav.offers':'Packages','nav.contacts':'Contact','cta.book':'Book now',
+  'hero.eyebrow':'Zakarpattia · Lake Synevyr','hero.title':'Twelve cabins, mountains and <em>silence</em>',
+  'hero.text':'An eco-lodge in a spruce forest in the Carpathians. Hot tubs under the stars, local cuisine, sunrises over alpine meadows and snowy winters.',
+  'hero.btn1':'Choose dates','hero.btn2':'See the cabins',
+  f1:'spruce cabins',f2:'above sea level',f3:'to Lake Synevyr',f3s:' km',f4:'guest rating',scroll:'Scroll',
+  'book.in':'Check-in','book.out':'Check-out','book.guests':'Guests','book.house':'Cabin','book.calc':'Calculate','book.send':'Send request',
+  marquee:'Hot tub under the stars|Morning coffee on the terrace|Silence of the spruce forest|Banosh with brynza|Sunrise over the meadows|Snow and a fireplace',
+  'story.badge':'since<br>2014','story.eyebrow':'About us','story.title':'A place where time <em>slows down</em>',
+  'story.p1':'Smereka is the Carpathian spruce every one of our cabins is built from. We sit on a slope above the valley, two kilometres from Lake Synevyr, the "sea eye" of the Carpathians.',
+  'story.p2':'Twelve cabins are placed so you never see the neighbours: only mountains, forest and sky. No TVs, but fast internet if you really need it.',
+  'story.quote':'"We wanted a place where you come for a weekend and leave feeling like you had a month off."','story.who':'Oksana & Myroslav Havryliuk, founders',
+  'houses.eyebrow':'Stay','houses.title':'Four kinds of <em>cabins</em>','houses.lead':'Every cabin is built from spruce, with heated floors, a fireplace and a terrace. Breakfast is included.',
+  perNight:'/ night',choose:'Choose',
+  'h.forest':'Forest Hut','h.glass':'Glass House "Starry"','h.shore':'Creekside House with Hot Tub','h.family':'Hrazhda Homestead',
+  'h.forest.tag':'5 cabins','h.glass.tag':'Most loved','h.shore.tag':'Private hot tub','h.family.tag':'For family & friends',
+  'h.forest.chips':'28 m²|up to 2 guests|fireplace|terrace','h.glass.chips':'34 m²|up to 2 guests|glass roof|mountain view','h.shore.chips':'52 m²|up to 4 guests|wood-fired tub|mountain creek','h.family.chips':'110 m²|up to 6 guests|3 bedrooms|kitchen-lounge',
+  'h.forest.d':'A cosy hut for two deep in the forest. A bed by the panoramic window, coffee machine and a hammock on the terrace.',
+  'h.glass.d':'A bedroom under a glass ceiling: the Milky Way and shooting stars right above you. A telescope in every house.',
+  'h.shore.d':'Right by a mountain creek. Your own wood-fired herbal hot tub, sauna and a terrace over the water.',
+  'h.family.d':'A two-storey homestead with three bedrooms, a big kitchen, a stove and a sauna. BBQ area with mountain views.',
+  'seasons.eyebrow':'All year round','seasons.title':'Two different <em>holidays</em> in one place','seasons.lead':'Summer brings meadows, blueberries and long evenings. Winter brings snow up to the windows, skiing and a hot tub in a snowdrift.',
+  's1.when':'June — September','s1.title':'Summer in the meadows','s1.list':'Hikes to Kuk and Krasna ridges|Rafting on the Tereblia river|Picking blueberries and porcini|Lake Synevyr at sunrise',
+  's2.when':'December — March','s2.title':'Winter and snow','s2.list':'Skiing in Pylypets and Drahobrat|Snowshoe walks|Christmas with carol singers|Hot tub in the snow',
+  'exp.eyebrow':'Things to do','exp.title':'Experiences <em>included</em>',
+  'e.t':'Herbal hot tub|Mountain hikes|Smereka trail|Terrace yoga|Trout fishing|Kayaking|Cheese making|Skiing',
+  'e.d':'Wood-fired tub with Carpathian herbs|A guide to the most beautiful meadows|6 km through the forest to Shypit waterfall|Every morning at 8:00 with mountain views|Rods, a guide and grilled trout from your catch|Calm river, gear provided|Make brynza with local shepherds|Ski lifts 25 minutes away',
+  'kitchen.eyebrow':'Vatra restaurant','kitchen.title':'Carpathian cuisine <em>from what grows nearby</em>',
+  'kitchen.lead':'Brynza comes from the neighbouring meadow, mushrooms and berries from our forest, and we bake our own bread every morning. Chef Mariana Lukach cooks grandma\'s recipes in a new way.',
+  'm.t':'Banosh with brynza and cracklings|Bograch in a cauldron|Carpathian trout over the fire|Potato pancakes with porcini','m.d':'Corn grits, homemade sour cream|Three kinds of meat, a hint of smoke|Herb butter, roasted vegetables|Sour cream, onion, thyme',
+  'm.p':'240|320|420|260',
+  'offers.eyebrow':'Packages','offers.title':'Ready-made <em>getaways</em>','offers.lead':'We have thought of everything: stay, food and experiences in one price.',
+  'o.badge':'2 nights|3 nights · any season|4 nights · June — August','o.t':'Reset|Starry Sky|Carpathian Summer',
+  'o.d':'For those tired of the city who just want to sleep well.|A night under the stars, a telescope and a candlelit dinner.|A summer mountain holiday for family or friends.',
+  'o.l1':'Forest Hut for two|Breakfasts and one dinner|Herbal hot tub|Late check-out until 16:00',
+  'o.l2':'Glass House "Starry"|Full board|Night tour with an astronomer|Massage for two',
+  'o.l3':'Creekside House with Hot Tub|Breakfasts and dinners|Guided meadow hike|Rafting on the Tereblia',
+  'o.u':'for two|for two|up to 4 guests','o.p':'7900|17500|31000',
+  'gallery.eyebrow':'Gallery','gallery.title':'A little <em>atmosphere</em>',
+  'reviews.eyebrow':'Reviews','reviews.title':'Guests <em>come back</em>','reviews.lead':'Every third guest returns to stay with us again.',
+  'r.t':'We lay in "Starry" counting shooting stars until we fell asleep. Morning coffee on the terrace above the fog. The best anniversary gift ever.|We came as a group to the Hrazhda homestead. Hot tub, mountains, bograch over the fire, kids in the forest all day. Nobody wanted to leave.|So quiet I could not sleep the first night. The banosh is the best I have had in the Carpathians. Such warm, kind staff.',
+  'r.w':'Maryna & Oleh|The Kovalenko family|Iryna','r.f':'Lviv, February|Kyiv, July|Odesa, September',
+  'road.eyebrow':'Getting here','road.title':'The road is <em>part of the journey</em>',
+  'rt.t':'To Mukachevo or Uzhhorod|Our transfer|By car','rt.d':'Night train from Kyiv or Lviv, Intercity or bus.|We meet you at the station. 2 hours on a scenic road, 1 800 ₴ per car.|Via Mizhhiria, the last 5 km are serpentine. We clear the road in winter. Free parking.',
+  'faq.eyebrow':'FAQ','faq.title':'Answers <em>in advance</em>',
+  'q.q':'What are check-in and check-out times?|Can I bring my dog?|Is there mobile signal and internet?|Is it safe in the mountains in winter?|What is the cancellation policy?',
+  'q.a':'Check-in from 15:00, check-out by 12:00. Early check-in and late check-out are free when possible.|Yes, in the Forest Huts and the Homestead. 400 ₴ per stay; we provide a bed and bowls.|Mobile signal covers the whole site, and every cabin has Starlink Wi-Fi, fast enough for video calls.|Yes. We clear the access road daily and can pick you up from the highway in a 4x4 if needed.|Free cancellation up to 14 days before arrival. After that we keep the cost of the first night.',
+  'contacts.eyebrow':'Contact','contacts.title':'Write <em>to us</em>','contacts.lead':'We will help you choose a cabin, dates and experiences. We reply within an hour, 9:00 to 22:00.',
+  'c.addrL':'Address','c.addr':'Synevyr village, Khust district, Zakarpattia region, Ukraine','c.phoneL':'Phone','c.mailL':'Email','c.msgL':'Messengers','c.msg':'Telegram and Viber on the same number',
+  'form.name':'Your name','form.contact':'Phone or email','form.text':'Message','form.send':'Send',
+  'footer.copy':'Smereka eco-lodge. Carpathians.','footer.made':'Made with love for the mountains',
+  'err.dates':'Please choose check-in and check-out dates.','err.past':'The check-in date has already passed.','err.order':'Check-out must be at least one day after check-in.','err.long':'Online booking is limited to 30 nights. Write to us for longer stays.',
+  'err.cap':'"{h}" sleeps up to {n} guests. Please choose a bigger cabin.','note':'Breakfast included. Leave your contacts and we will confirm the booking.','disc':'10% weekly discount',
+  nights:['night','nights','nights'],guests:['guest','guests','guests'],
+  fill:'Please fill in all fields.',sending:'Sending…',sent:'Thank you! We will get back to you soon.',bookSent:'Request sent! We will contact you to confirm the booking.',
+  fail:'Could not send. Write to us directly: ',subjMsg:'New message from the Smereka website',subjBook:'New booking request — Smereka'
+}};
+
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const LOCALE = {uk:'uk-UA', ru:'ru-RU', en:'en-GB'};
+let lang = 'uk';
+try { const s = localStorage.getItem('lang'); if (T[s]) lang = s; } catch (e) {}
+const t = k => T[lang][k] ?? T.uk[k] ?? '';
+const list = k => t(k).split('|');
+const money = n => Math.round(n).toLocaleString(LOCALE[lang]) + ' ₴';
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function plural(n, f) {
+  if (lang === 'en') return n === 1 ? f[0] : f[1];
+  const a = n % 10, b = n % 100;
+  return f[a === 1 && b !== 11 ? 0 : a >= 2 && a <= 4 && (b < 10 || b >= 20) ? 1 : 2];
+}
+
+/* ===== Рендер динамічних блоків ===== */
+function renderHouses() {
+  $('#cards').innerHTML = HOUSES.map(h => `
+    <article class="card reveal">
+      <div class="img"><i style="background-image:url('${IMG(h.img)}')"></i><span class="tag">${esc(t('h.'+h.id+'.tag'))}</span></div>
+      <div class="body">
+        <h3>${esc(t('h.'+h.id))}</h3>
+        <div class="chips">${list('h.'+h.id+'.chips').map(c => `<span>${esc(c)}</span>`).join('')}</div>
+        <p>${esc(t('h.'+h.id+'.d'))}</p>
+        <div class="foot"><div class="price">${money(h.price)} <small>${esc(t('perNight'))}</small></div>
+        <button class="btn" data-house="${h.id}">${esc(t('choose'))}</button></div>
+      </div>
+    </article>`).join('');
+  const sel = $('#house'), v = sel.value;
+  sel.innerHTML = HOUSES.map(h => `<option value="${h.id}">${esc(t('h.'+h.id))} — ${money(h.price)}</option>`).join('');
+  if (v) sel.value = v;
+}
+function renderAll() {
+  document.documentElement.lang = lang;
+  document.title = t('title');
+  $$('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
+  $$('[data-i18n-html]').forEach(el => el.innerHTML = t(el.dataset.i18nHtml));
+  $$('[data-i18n-list]').forEach(el => el.innerHTML = list(el.dataset.i18nList).map(x => `<li>${esc(x)}</li>`).join(''));
+  $$('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+  const words = list('marquee').map(w => `<span>${esc(w)}</span>`).join('');
+  $('#marquee').innerHTML = words + words;
+  renderHouses();
+  const et = list('e.t'), ed = list('e.d');
+  $('#exp-grid').innerHTML = et.map((x, i) => `<div class="reveal"><div class="ic">${EXP_ICONS[i]}</div><h3>${esc(x)}</h3><p>${esc(ed[i])}</p></div>`).join('');
+  const mt = list('m.t'), md = list('m.d'), mp = list('m.p');
+  $('#menu-list').innerHTML = mt.map((x, i) => `<div class="menu-item"><div><b>${esc(x)}</b><span>${esc(md[i])}</span></div><i>${money(+mp[i])}</i></div>`).join('');
+  const ob = list('o.badge'), ot = list('o.t'), od = list('o.d'), ou = list('o.u'), op = list('o.p');
+  $('#offers-grid').innerHTML = ot.map((x, i) => `<div class="offer reveal ${i === 1 ? 'hot' : ''}"><span class="badge">${esc(ob[i])}</span><h3>${esc(x)}</h3><p>${esc(od[i])}</p><ul>${list('o.l'+(i+1)).map(l => `<li>${esc(l)}</li>`).join('')}</ul><div class="price">${money(+op[i])} <small>${esc(ou[i])}</small></div></div>`).join('');
+  const rt = list('r.t'), rw = list('r.w'), rf = list('r.f');
+  $('#rev-grid').innerHTML = rt.map((x, i) => `<div class="rev reveal"><div class="stars">★★★★★</div><p>${esc(x)}</p><b>${esc(rw[i])}</b><small>${esc(rf[i])}</small></div>`).join('');
+  const tt = list('rt.t'), td = list('rt.d');
+  $('#route').innerHTML = tt.map((x, i) => `<li><span class="n">${i+1}</span><div><b>${esc(x)}</b><span>${esc(td[i])}</span></div></li>`).join('');
+  const qq = list('q.q'), qa = list('q.a');
+  $('#faq').innerHTML = qq.map((x, i) => `<details><summary>${esc(x)}</summary><p>${esc(qa[i])}</p></details>`).join('');
+  $$('[data-i18n-suffix]').forEach(b => b.dataset.suffix = t(b.dataset.i18nSuffix));
+  $$('[data-count]').forEach(b => { if (b.dataset.done) b.textContent = fmtCount(b, +b.dataset.count); });
+  observeReveal();
+  if (lastQuote) showQuote();
+}
+$$('.lang button').forEach(b => b.onclick = () => {
+  lang = b.dataset.lang;
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  renderAll();
+});
+
+/* ===== Анімації ===== */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: .1});
+function observeReveal() { $$('.reveal:not(.in)').forEach(el => io.observe(el)); }
+const fmtCount = (b, v) => v.toLocaleString(LOCALE[lang], {minimumFractionDigits: +(b.dataset.dec || 0), maximumFractionDigits: +(b.dataset.dec || 0)}) + (b.dataset.suffix || '');
+function runCounters() {
+  $$('[data-count]').forEach(b => {
+    const end = +b.dataset.count, t0 = performance.now(), dur = 1600;
+    const step = now => { const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      b.textContent = fmtCount(b, end * e); if (p < 1) requestAnimationFrame(step); else b.dataset.done = 1; };
+    requestAnimationFrame(step);
+  });
+}
+const header = $('#header'), menu = $('#menu'), burger = $('#burger'), toTop = $('#toTop'), heroBg = $('#heroBg');
+const onScroll = () => {
+  header.classList.toggle('scrolled', scrollY > 40);
+  toTop.classList.toggle('show', scrollY > 900);
+  if (scrollY < innerHeight) heroBg.style.translate = `0 ${scrollY * .25}px`;
+};
+addEventListener('scroll', onScroll, {passive: true}); onScroll();
+toTop.onclick = () => scrollTo({top: 0, behavior: 'smooth'});
+burger.onclick = () => burger.setAttribute('aria-expanded', menu.classList.toggle('open'));
+menu.addEventListener('click', e => { if (e.target.tagName === 'A') { menu.classList.remove('open'); burger.setAttribute('aria-expanded', false); } });
+$('#year').textContent = new Date().getFullYear();
+
+/* Галерея */
+$$('.gallery button').forEach(b => {
+  b.querySelector('i').style.backgroundImage = `url('${IMG(b.dataset.full)}')`;
+  b.onclick = () => { const lb = $('#lightbox'); lb.querySelector('img').src = `https://images.unsplash.com/${b.dataset.full}?auto=format&fit=crop&w=1800&q=80`; lb.classList.add('show'); };
+});
+$('#lightbox').onclick = () => $('#lightbox').classList.remove('show');
+addEventListener('keydown', e => { if (e.key === 'Escape') $('#lightbox').classList.remove('show'); });
+
+function toast(msg) { const el = $('#toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), 4500); }
+
+/* ===== Бронювання ===== */
+const seasonK = d => { const m = d.getMonth(); return (m >= 5 && m <= 7) || m === 11 || m <= 1 ? 1.2 : 1; };
+const weekendK = d => [5, 6].includes(d.getDay()) ? 1.15 : 1;
+const pad = n => String(n).padStart(2, '0');
+const iso = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const parse = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+const inEl = $('#in'), outEl = $('#out'), today = new Date();
+inEl.min = iso(today); inEl.value = iso(addDays(today, 7));
+outEl.min = iso(addDays(today, 8)); outEl.value = iso(addDays(today, 9));
+inEl.addEventListener('change', () => {
+  if (!inEl.value) return;
+  const next = addDays(parse(inEl.value), 1);
+  outEl.min = iso(next);
+  if (!outEl.value || outEl.value <= inEl.value) outEl.value = iso(next);
+});
+$('#cards').addEventListener('click', e => {
+  const b = e.target.closest('[data-house]'); if (!b) return;
+  $('#house').value = b.dataset.house;
+  $('#book').scrollIntoView({behavior: 'smooth', block: 'center'});
+});
+
+let lastQuote = null;
+function calc() {
+  if (!inEl.value || !outEl.value) return {err: t('err.dates')};
+  const a = parse(inEl.value), b = parse(outEl.value);
+  if (a < parse(iso(today))) return {err: t('err.past')};
+  const nights = Math.round((b - a) / 864e5);
+  if (nights < 1) return {err: t('err.order')};
+  if (nights > 30) return {err: t('err.long')};
+  const h = HOUSES.find(x => x.id === $('#house').value), g = +$('#guests').value;
+  if (g > h.max) return {err: t('err.cap').replace('{h}', t('h.' + h.id)).replace('{n}', h.max)};
+  let total = 0;
+  for (let i = 0; i < nights; i++) { const d = addDays(a, i); total += h.price * seasonK(d) * weekendK(d); }
+  const disc = nights >= 7;
+  if (disc) total *= .9;
+  return {h, g, nights, total, disc, a, b};
+}
+function showQuote() {
+  const q = calc(), r = $('#bookResult'), box = $('#quoteBox');
+  if (q.err) { r.className = 'result err'; r.textContent = q.err; box.classList.remove('show'); lastQuote = null; return; }
+  lastQuote = q; r.textContent = '';
+  $('#total').textContent = money(q.total);
+  $('#totalNote').textContent = `${t('h.' + q.h.id)} · ${q.nights} ${plural(q.nights, t('nights'))} · ${q.g} ${plural(q.g, t('guests'))}` + (q.disc ? ` · ${t('disc')}` : '') + '. ' + t('note');
+  box.classList.add('show');
+}
+$('#bookingForm').addEventListener('submit', e => { e.preventDefault(); showQuote(); });
+$('#bookingForm').addEventListener('change', () => { if (lastQuote) showQuote(); });
+
+/* ===== Надсилання на пошту (FormSubmit) ===== */
+async function sendMail(data, btn, out, okMsg) {
+  const old = btn.innerHTML; btn.disabled = true; btn.textContent = t('sending');
+  try {
+    const res = await fetch(FORM_ENDPOINT, {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify({...data, _template: 'table', _captcha: 'false'})});
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok || String(j.success) === 'false') throw new Error(j.message || res.status);
+    out.className = 'result ok'; out.textContent = okMsg; toast(okMsg);
+    return true;
+  } catch (err) {
+    out.className = 'result err'; out.textContent = t('fail');
+    const a = document.createElement('a'); a.href = 'mailto:' + EMAIL_TO; a.textContent = EMAIL_TO; a.style.textDecoration = 'underline';
+    out.append(a);
+    return false;
+  } finally { btn.disabled = false; btn.innerHTML = old; }
+}
+$('#contactForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, out = $('#contactMsg');
+  if (f._honey.value) return;
+  const name = $('#cname').value.trim(), contact = $('#ccontact').value.trim(), msg = $('#ctext').value.trim();
+  if (!name || !contact || !msg) { out.className = 'result err'; out.textContent = t('fill'); return; }
+  const ok = await sendMail({_subject: t('subjMsg'), 'Ім\'я / Name': name, 'Контакт / Contact': contact, 'Повідомлення / Message': msg, 'Мова / Lang': lang}, f.querySelector('button[type=submit]'), out, t('sent'));
+  if (ok) f.reset();
+});
+$('#quoteBox').addEventListener('submit', async e => {
+  e.preventDefault();
+  const out = $('#bookResult');
+  if (e.target._honey.value) return;
+  const q = calc(); if (q.err) return showQuote();
+  const name = $('#bname').value.trim(), contact = $('#bcontact').value.trim();
+  if (!name || !contact) { out.className = 'result err'; out.textContent = t('fill'); return; }
+  const ok = await sendMail({
+    _subject: t('subjBook'), 'Ім\'я / Name': name, 'Контакт / Contact': contact,
+    'Будинок / Cabin': T.uk['h.' + q.h.id], 'Заїзд / Check-in': inEl.value, 'Виїзд / Check-out': outEl.value,
+    'Ночей / Nights': q.nights, 'Гостей / Guests': q.g, 'Сума / Total': Math.round(q.total).toLocaleString('uk-UA') + ' ₴', 'Мова / Lang': lang
+  }, e.target.querySelector('button[type=submit]'), out, t('bookSent'));
+  if (ok) e.target.reset();
+});
+
+renderAll();
+setTimeout(runCounters, 400);
+</script>
+</body>
+</html>
