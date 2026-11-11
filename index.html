@@ -88,6 +88,33 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--copper);box
 @keyframes fade{from{opacity:0;transform:translateY(8px)}}
 .total{font:600 2.2rem var(--serif);color:var(--forest);line-height:1}
 .total-note{font-size:.84rem;color:var(--muted);max-width:280px}
+.pay-row{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding-top:18px;border-top:1px dashed var(--line)}
+.pay-row[hidden]{display:none}
+.pay-title{font:600 1.35rem var(--serif);color:var(--forest)}
+.pay-opt{display:flex;gap:4px;background:var(--birch);padding:4px;border-radius:999px}
+.pay-opt label{margin:0;text-transform:none;letter-spacing:0;font-size:.85rem;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer;color:var(--muted);transition:.2s}
+.pay-opt label:has(input:checked){background:#fff;color:var(--forest);box-shadow:0 2px 8px rgba(24,35,29,.12)}
+.pay-opt label:has(input:focus-visible){outline:2px solid var(--copper)}
+.pay-opt input{position:absolute;opacity:0;width:0;height:0}
+.btn.pay{background:var(--forest)}.btn.pay:hover{background:#0d1410;box-shadow:0 10px 24px rgba(24,35,29,.3)}
+.card-logos{display:flex;gap:6px;flex-wrap:wrap}
+.card-logos span{font-size:.68rem;font-weight:700;border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 8px;color:var(--muted);letter-spacing:.02em}
+.pay-note{font-size:.8rem;color:var(--muted);flex-basis:100%}
+.pay-tabs{flex-basis:100%;display:flex;gap:8px;flex-wrap:wrap}
+.pay-tabs button{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:12px;padding:10px 16px;font-weight:600;font-size:.88rem;cursor:pointer;transition:.2s}
+.pay-tabs button[aria-selected=true]{border-color:var(--forest);color:var(--forest);box-shadow:inset 0 0 0 1px var(--forest)}
+.pay-tabs button[hidden]{display:none}
+.pay-panel{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.pay-panel[hidden]{display:none}
+.pl-sum{flex-basis:100%;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.pl-sum b{font:600 2rem var(--serif);color:var(--forest)}
+.pl-list{flex-basis:100%;display:grid;gap:8px;margin:0}
+.pl-list div{display:grid;grid-template-columns:minmax(120px,190px) 1fr auto;gap:10px;align-items:center;background:var(--birch);border-radius:12px;padding:10px 14px}
+.pl-list dt{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.pl-list dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;word-break:break-all;min-width:0}
+.copy{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--forest)}
+.copy.ok{background:var(--forest);color:#fff;border-color:var(--forest)}
+@media(max-width:560px){.pl-list div{grid-template-columns:1fr auto}.pl-list dt{grid-column:1/-1}}
 
 /* marquee */
 .marquee{background:var(--forest);color:#e9ece6;overflow:hidden;padding:22px 0;margin-top:90px}
@@ -340,6 +367,31 @@ footer .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:
           <div><label for="bcontact" data-i18n="form.contact"></label><input id="bcontact" autocomplete="tel" required></div>
           <button class="btn" type="submit" data-i18n="book.send"></button>
           <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="pay-row" id="payRow" hidden>
+            <span class="pay-title" data-i18n="pay.title"></span>
+            <div class="pay-opt" role="radiogroup">
+              <label><input type="radio" name="payShare" id="payPre" value="0.3" checked><span data-i18n="pay.pre"></span></label>
+              <label><input type="radio" name="payShare" id="payFull" value="1"><span data-i18n="pay.full"></span></label>
+            </div>
+            <div class="pay-tabs" id="payTabs" role="tablist">
+              <button type="button" role="tab" data-m="ua" id="tabUA">🇺🇦 <span data-i18n="pay.m.ua"></span></button>
+              <button type="button" role="tab" data-m="pl" id="tabPL">🇵🇱 <span data-i18n="pay.m.pl"></span></button>
+            </div>
+            <div class="pay-panel" id="payUA">
+              <div class="pl-sum" id="uaSum"><span data-i18n="pl.amount"></span><b id="uaAmount"></b></div>
+              <dl class="pl-list" id="uaList"></dl>
+              <button class="btn pay" type="button" id="uaDone" data-i18n="pl.done"></button>
+              <button class="btn pay" type="button" id="payBtn"></button>
+              <div class="card-logos" aria-label="Visa, Mastercard"><span>VISA</span><span>Mastercard</span></div>
+              <p class="pay-note" data-i18n="pay.note"></p>
+            </div>
+            <div class="pay-panel" id="payPL" hidden>
+              <div class="pl-sum"><span data-i18n="pl.amount"></span><b id="plAmount"></b><small id="plRate"></small></div>
+              <dl class="pl-list" id="plList"></dl>
+              <button class="btn pay" type="button" id="plDone" data-i18n="pl.done"></button>
+              <p class="pay-note" data-i18n="pl.note"></p>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -515,6 +567,21 @@ footer .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:
 /* ===== Налаштування: куди надходять листи з форм ===== */
 const EMAIL_TO = 'liutkoh@gmail.com';
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + EMAIL_TO;
+/* Посилання на оплату карткою: банка monobank (https://send.monobank.ua/jar/...)
+   або будь-яке інше платіжне посилання. Порожньо — блок оплати прихований. */
+const PAY_LINK = '';
+/* Або просто українська картка: гість копіює номер і переказує в своєму банку. */
+const UA = {
+  card: '',        // номер картки, напр. '5168 0000 0000 0000'
+  name: '',        // ім'я отримувача
+};
+/* Оплата з Польщі (польська картка → польський рахунок). Порожні поля не показуються. */
+const PL = {
+  blikPhone: '',   // номер телефону для переказу BLIK, напр. '+48 600 000 000'
+  iban: '',        // польський рахунок, напр. 'PL61 1090 1014 0000 0712 1981 2874'
+  name: '',        // ім'я отримувача, як у банку
+  rate: 10.5,      // приблизний курс: скільки гривень за 1 злотий
+};
 
 const IMG = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=72`;
 const HOUSES = [
@@ -582,7 +649,15 @@ uk:{
   'err.cap':'«{h}» вміщує до {n} гостей. Оберіть більший будинок.','note':'Сніданки включені. Залиште контакти, і ми підтвердимо бронювання.','disc':'знижка 10% за тиждень',
   nights:['ніч','ночі','ночей'],guests:['гість','гості','гостей'],
   fill:'Будь ласка, заповніть усі поля.',sending:'Надсилаємо…',sent:'Дякуємо! Ми відповімо вам найближчим часом.',bookSent:'Заявку надіслано! Ми зв\'яжемося з вами, щоб підтвердити бронювання.',
-  fail:'Не вдалося надіслати. Напишіть нам напряму: ',subjMsg:'Нове повідомлення з сайту «Смерека»',subjBook:'Нова заявка на бронювання — «Смерека»'
+  fail:'Не вдалося надіслати. Напишіть нам напряму: ',subjMsg:'Нове повідомлення з сайту «Смерека»',subjBook:'Нова заявка на бронювання — «Смерека»',
+  'pay.title':'Оплата карткою','pay.pre':'Передоплата 30%','pay.full':'Повна сума','pay.btn':'Оплатити',
+  'pay.note':'Безпечна оплата на сторінці банку. Підходить картка Visa чи Mastercard будь-якого банку.','pay.enter':'На сторінці оплати вкажіть суму {s} і в коментарі ваше ім\'я.',
+  'pay.need':'Вкажіть ім\'я та контакт, щоб ми знайшли ваш платіж.','pay.opened':'Відкрили сторінку оплати в новій вкладці. Після оплати ми підтвердимо бронювання.',
+  'pay.blocked':'Якщо вкладка не відкрилася: ','pay.comment':'Бронювання',
+  'pay.m.ua':'Картка України','pay.m.pl':'З Польщі (BLIK / przelew)',
+  'pl.amount':'До сплати:','pl.rate':'≈ за курсом {r} ₴ за 1 zł','ua.card':'Номер картки','pl.blik':'BLIK на номер','pl.iban':'Рахунок (IBAN)','pl.name':'Отримувач','pl.title':'Призначення',
+  'pl.done':'Я оплатив(ла)','pl.note':'Переказ BLIK на номер телефону або звичайний przelew з будь-якого польського банку. Після оплати натисніть кнопку вище.',
+  'pl.thanks':'Дякуємо! Ми перевіримо надходження і підтвердимо бронювання.',copy:'Копіювати',copied:'Скопійовано'
 },
 ru:{
   title:'Смерека — эко-отель в Карпатах у озера Синевир',
@@ -640,7 +715,15 @@ ru:{
   'err.cap':'«{h}» вмещает до {n} гостей. Выберите дом побольше.','note':'Завтраки включены. Оставьте контакты, и мы подтвердим бронь.','disc':'скидка 10% за неделю',
   nights:['ночь','ночи','ночей'],guests:['гость','гостя','гостей'],
   fill:'Пожалуйста, заполните все поля.',sending:'Отправляем…',sent:'Спасибо! Мы ответим вам в ближайшее время.',bookSent:'Заявка отправлена! Мы свяжемся с вами, чтобы подтвердить бронь.',
-  fail:'Не удалось отправить. Напишите нам напрямую: ',subjMsg:'Новое сообщение с сайта «Смерека»',subjBook:'Новая заявка на бронирование — «Смерека»'
+  fail:'Не удалось отправить. Напишите нам напрямую: ',subjMsg:'Новое сообщение с сайта «Смерека»',subjBook:'Новая заявка на бронирование — «Смерека»',
+  'pay.title':'Оплата картой','pay.pre':'Предоплата 30%','pay.full':'Полная сумма','pay.btn':'Оплатить',
+  'pay.note':'Безопасная оплата на странице банка. Подходит карта Visa или Mastercard любого банка.','pay.enter':'На странице оплаты укажите сумму {s} и в комментарии ваше имя.',
+  'pay.need':'Укажите имя и контакт, чтобы мы нашли ваш платёж.','pay.opened':'Открыли страницу оплаты в новой вкладке. После оплаты мы подтвердим бронь.',
+  'pay.blocked':'Если вкладка не открылась: ','pay.comment':'Бронирование',
+  'pay.m.ua':'Карта Украины','pay.m.pl':'Из Польши (BLIK / przelew)',
+  'pl.amount':'К оплате:','pl.rate':'≈ по курсу {r} ₴ за 1 zł','ua.card':'Номер карты','pl.blik':'BLIK на номер','pl.iban':'Счёт (IBAN)','pl.name':'Получатель','pl.title':'Назначение',
+  'pl.done':'Я оплатил(а)','pl.note':'Перевод BLIK на номер телефона или обычный przelew из любого польского банка. После оплаты нажмите кнопку выше.',
+  'pl.thanks':'Спасибо! Мы проверим поступление и подтвердим бронь.',copy:'Копировать',copied:'Скопировано'
 },
 en:{
   title:'Smereka — eco-lodge in the Carpathians by Lake Synevyr',
@@ -698,7 +781,15 @@ en:{
   'err.cap':'"{h}" sleeps up to {n} guests. Please choose a bigger cabin.','note':'Breakfast included. Leave your contacts and we will confirm the booking.','disc':'10% weekly discount',
   nights:['night','nights','nights'],guests:['guest','guests','guests'],
   fill:'Please fill in all fields.',sending:'Sending…',sent:'Thank you! We will get back to you soon.',bookSent:'Request sent! We will contact you to confirm the booking.',
-  fail:'Could not send. Write to us directly: ',subjMsg:'New message from the Smereka website',subjBook:'New booking request — Smereka'
+  fail:'Could not send. Write to us directly: ',subjMsg:'New message from the Smereka website',subjBook:'New booking request — Smereka',
+  'pay.title':'Pay by card','pay.pre':'30% deposit','pay.full':'Full amount','pay.btn':'Pay',
+  'pay.note':'Secure payment on the bank page. Any Visa or Mastercard from any bank is accepted.','pay.enter':'On the payment page enter {s} and your name in the comment.',
+  'pay.need':'Enter your name and contact so we can match your payment.','pay.opened':'The payment page opened in a new tab. We will confirm your booking once it is paid.',
+  'pay.blocked':'If the tab did not open: ','pay.comment':'Booking',
+  'pay.m.ua':'Ukrainian card','pay.m.pl':'From Poland (BLIK / przelew)',
+  'pl.amount':'To pay:','pl.rate':'≈ at {r} ₴ per 1 zł','ua.card':'Card number','pl.blik':'BLIK to phone','pl.iban':'Account (IBAN)','pl.name':'Recipient','pl.title':'Transfer title',
+  'pl.done':'I have paid','pl.note':'BLIK transfer to a phone number or a regular przelew from any Polish bank. Press the button above once you have paid.',
+  'pl.thanks':'Thank you! We will check the payment and confirm your booking.',copy:'Copy',copied:'Copied'
 }};
 
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
@@ -844,7 +935,104 @@ function showQuote() {
   $('#total').textContent = money(q.total);
   $('#totalNote').textContent = `${t('h.' + q.h.id)} · ${q.nights} ${plural(q.nights, t('nights'))} · ${q.g} ${plural(q.g, t('guests'))}` + (q.disc ? ` · ${t('disc')}` : '') + '. ' + t('note');
   box.classList.add('show');
+  updatePayBtn();
 }
+
+/* ===== Оплата карткою ===== */
+const HAS_UA = !!(PAY_LINK || UA.card), HAS_PL = !!(PL.blikPhone || PL.iban);
+$('#payBtn').hidden = !PAY_LINK;
+$('#uaSum').hidden = $('#uaList').hidden = $('#uaDone').hidden = !!PAY_LINK || !UA.card;
+$('#payRow').hidden = !HAS_UA && !HAS_PL;
+$('#tabUA').hidden = !HAS_UA; $('#tabPL').hidden = !HAS_PL;
+$('#payTabs').hidden = !(HAS_UA && HAS_PL);
+let payMethod = HAS_UA ? 'ua' : 'pl';
+function setMethod(m) {
+  payMethod = m;
+  $$('#payTabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.m === m));
+  $('#payUA').hidden = m !== 'ua'; $('#payPL').hidden = m !== 'pl';
+}
+$$('#payTabs button').forEach(b => b.onclick = () => setMethod(b.dataset.m));
+setMethod(payMethod);
+const payShare = () => +document.querySelector('input[name=payShare]:checked').value;
+const payAmount = q => Math.round(q.total * payShare());
+const plnAmount = q => Math.ceil(payAmount(q) / PL.rate);
+const plTitle = () => `Smereka ${$('#bname').value.trim() || ''} ${inEl.value}`.replace(/\s+/g, ' ').trim();
+function updatePayBtn() {
+  if (!lastQuote) return;
+  $('#payBtn').textContent = `${t('pay.btn')} ${money(payAmount(lastQuote))}`;
+  $('#plAmount').textContent = plnAmount(lastQuote).toLocaleString('pl-PL') + ' zł';
+  $('#plRate').textContent = `(${money(payAmount(lastQuote))}, ${t('pl.rate').replace('{r}', PL.rate.toLocaleString(LOCALE[lang]))})`;
+  const rowsHtml = rows => rows.filter(r => r[1]).map(([k, v]) => `<div><dt>${esc(t(k))}</dt><dd>${esc(v)}</dd><button type="button" class="copy" data-copy="${esc(v)}">${esc(t('copy'))}</button></div>`).join('');
+  $('#plList').innerHTML = rowsHtml([['pl.blik', PL.blikPhone], ['pl.iban', PL.iban], ['pl.name', PL.name], ['pl.title', plTitle()]]);
+  $('#uaAmount').textContent = money(payAmount(lastQuote));
+  $('#uaList').innerHTML = rowsHtml([['ua.card', UA.card], ['pl.name', UA.name], ['pl.title', plTitle()]]);
+}
+$('#bname').addEventListener('input', updatePayBtn);
+$('#uaDone').addEventListener('click', async e => {
+  const out = $('#bookResult');
+  const q = calc(); if (q.err) return showQuote();
+  const name = $('#bname').value.trim(), contact = $('#bcontact').value.trim();
+  if (!name || !contact) { out.className = 'result err'; out.textContent = t('pay.need'); $(name ? '#bcontact' : '#bname').focus(); return; }
+  await sendMail({
+    _subject: '💳🇺🇦 ' + T.uk.subjBook, 'Ім\'я / Name': name, 'Контакт / Contact': contact, 'Будинок / Cabin': T.uk['h.' + q.h.id],
+    'Заїзд / Check-in': inEl.value, 'Виїзд / Check-out': outEl.value, 'Ночей / Nights': q.nights, 'Гостей / Guests': q.g,
+    'Сума / Total': Math.round(q.total).toLocaleString('uk-UA') + ' ₴',
+    'Оплата / Payment': `${payAmount(q).toLocaleString('uk-UA')} ₴ (${payShare() === 1 ? 'повна сума' : 'передоплата 30%'}) — гість каже, що переказав на картку. Перевірте надходження. Призначення: ${plTitle()}`,
+    'Мова / Lang': lang
+  }, e.currentTarget, out, t('pl.thanks'));
+});
+$('#payRow').addEventListener('click', async e => {
+  const b = e.target.closest('.copy'); if (!b) return;
+  try { await navigator.clipboard.writeText(b.dataset.copy); }
+  catch (err) { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  b.textContent = t('copied'); b.classList.add('ok');
+  setTimeout(() => { b.textContent = t('copy'); b.classList.remove('ok'); }, 1800);
+});
+$('#plDone').addEventListener('click', async e => {
+  const out = $('#bookResult');
+  const q = calc(); if (q.err) return showQuote();
+  const name = $('#bname').value.trim(), contact = $('#bcontact').value.trim();
+  if (!name || !contact) { out.className = 'result err'; out.textContent = t('pay.need'); $(name ? '#bcontact' : '#bname').focus(); return; }
+  await sendMail({
+    _subject: '💳🇵🇱 ' + T.uk.subjBook, 'Ім\'я / Name': name, 'Контакт / Contact': contact, 'Будинок / Cabin': T.uk['h.' + q.h.id],
+    'Заїзд / Check-in': inEl.value, 'Виїзд / Check-out': outEl.value, 'Ночей / Nights': q.nights, 'Гостей / Guests': q.g,
+    'Сума / Total': Math.round(q.total).toLocaleString('uk-UA') + ' ₴',
+    'Оплата / Payment': `${plnAmount(q)} zł ≈ ${payAmount(q).toLocaleString('uk-UA')} ₴ (${payShare() === 1 ? 'повна сума' : 'передоплата 30%'}) — гість каже, що оплатив з Польщі (BLIK/przelew). Перевірте надходження. Призначення: ${plTitle()}`,
+    'Мова / Lang': lang
+  }, e.currentTarget, out, t('pl.thanks'));
+});
+$$('input[name=payShare]').forEach(r => r.addEventListener('change', updatePayBtn));
+function payUrl(amount, comment) {
+  if (!/send\.monobank\.ua\/jar\//.test(PAY_LINK)) return PAY_LINK;
+  const u = new URL(PAY_LINK);
+  u.searchParams.set('a', amount);
+  u.searchParams.set('t', comment);
+  return u.toString();
+}
+$('#payBtn').addEventListener('click', () => {
+  const out = $('#bookResult');
+  const q = calc(); if (q.err) return showQuote();
+  const name = $('#bname').value.trim(), contact = $('#bcontact').value.trim();
+  if (!name || !contact) { out.className = 'result err'; out.textContent = t('pay.need'); $(name ? '#bcontact' : '#bname').focus(); return; }
+  const amount = payAmount(q);
+  const url = payUrl(amount, `${t('pay.comment')}: ${name}, ${inEl.value} — ${outEl.value}`);
+  // з noopener window.open завжди повертає null, тому посилання показуємо завжди — на випадок блокування вкладки
+  window.open(url, '_blank', 'noopener');
+  out.className = 'result ok';
+  const prefilled = /send\.monobank\.ua\/jar\//.test(PAY_LINK);
+  out.textContent = t('pay.opened') + ' ' + (prefilled ? '' : t('pay.enter').replace('{s}', money(amount)) + ' ') + t('pay.blocked');
+  const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = url; a.style.textDecoration = 'underline'; a.style.wordBreak = 'break-all';
+  out.append(a);
+  // Повідомляємо власника, що гість перейшов до оплати
+  fetch(FORM_ENDPOINT, {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify({
+    _subject: '💳 ' + T.uk.subjBook, _template: 'table', _captcha: 'false',
+    'Ім\'я / Name': name, 'Контакт / Contact': contact, 'Будинок / Cabin': T.uk['h.' + q.h.id],
+    'Заїзд / Check-in': inEl.value, 'Виїзд / Check-out': outEl.value, 'Ночей / Nights': q.nights, 'Гостей / Guests': q.g,
+    'Сума / Total': Math.round(q.total).toLocaleString('uk-UA') + ' ₴',
+    'Оплата / Payment': `${amount.toLocaleString('uk-UA')} ₴ (${payShare() === 1 ? 'повна сума' : 'передоплата 30%'}) — гість перейшов на сторінку оплати, перевірте надходження`,
+    'Мова / Lang': lang
+  })}).catch(() => {});
+});
 $('#bookingForm').addEventListener('submit', e => { e.preventDefault(); showQuote(); });
 $('#bookingForm').addEventListener('change', () => { if (lastQuote) showQuote(); });
 
